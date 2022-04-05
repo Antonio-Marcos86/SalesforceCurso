@@ -15,7 +15,15 @@ trigger ContactTrigger on Contact (after insert, after delete) {
     if(Trigger.isInsert && Trigger.isAfter){
         for(Contact contato : Trigger.new){
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-            string[]  toAddress = new String[]{'a.marcos1986@hotmail.com', 'a.marcos201986@gmail.com'};
+            List<string> toAddress = new List<String>{'a.marcos1986@hotmail.com'};
+
+            email.saveAsActivity = false;
+            email.setTargetObjectId(UserInfo.getUserId());
+            email.setToAddresses(toAddress);
+            email.setSubject('Novo Contato Adicionado');
+            email.setPlainTextBody('Foi criado o contato com o seguinte nome ' + contato.FirstName + ' ' + contato.LastName);
+
+            Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});
 
         }
     }
