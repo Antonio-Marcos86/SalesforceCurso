@@ -72,7 +72,7 @@ public with sharing class ClasseDemonstraEstrutura {
 
   }
 
-  public Integer acelerar( Integer velocidade){
+  public static Integer acelerar( Integer velocidade){
       Integer acelerar = velocidade + 10;
       return acelerar;
 
