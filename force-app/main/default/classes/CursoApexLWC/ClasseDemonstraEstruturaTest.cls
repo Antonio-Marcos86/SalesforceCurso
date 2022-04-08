@@ -21,14 +21,15 @@ public class ClasseDemonstraEstruturaTest {
         ClasseDemonstraEstrutura.dmlAccountInsert('Antonio');
     }
     
-     @isTest
-    static void testdmldmlAccountUpdate(){
-        ClasseDemonstraEstrutura.dmlAccountUpdate('Antonio', '0038c00002kdIHXAA2');
-    }
+  //   @isTest
+//    static void testdmlAccountUpdate(){
+  //      ClasseDemonstraEstrutura.dmlAccountUpdate('Minha conta 2', '0018c00002IBMhhAAH');
+  //  }
     
      @isTest
     static void testdmldmlAccountDelete(){
 		ClasseDemonstraEstrutura.dmlAccountDelete('Antonio', '0038c00002kdIHXAA2');
+ 
     }
     @istest
     static void testdeletarContas(){
@@ -51,6 +52,11 @@ public class ClasseDemonstraEstruturaTest {
     @isTest
     static void demosntraMap(){
         ClasseDemonstraEstrutura.demosntraMap();
+    }
+    
+    @isTest
+    static void testcriaLead(){
+        ClasseDemonstraEstrutura.criaLead('company', 'name');
     }
     
     
