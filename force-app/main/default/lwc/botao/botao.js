@@ -24,4 +24,5 @@ export default class Botao extends LightningElement {
         });
         this.dispatchEvent(event);
     }
+
 }
