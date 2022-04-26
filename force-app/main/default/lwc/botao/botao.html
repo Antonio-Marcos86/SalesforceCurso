@@ -1,7 +1,7 @@
 <template>
     
     <lightning-button variant="brand" label="Criar" title="Primary action" onclick={openModal} class="slds-m-left_x-small"></lightning-button>
-
+    
     <template if:true={isModalOpen}>
         <!-- Modal/Popup Box LWC starts here -->
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
@@ -21,15 +21,17 @@
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                     <lightning-record-edit-form object-api-name="Carro__c" onsuccess={handleSucess}>
                         <lightning-messages></lightning-messages>
-                        <lightning-input-field field-name="Name"> </lightning-input-field>
+                        <lightning-input-field field-name="Name" required="errors"> </lightning-input-field>
                         <lightning-input-field field-name="Modelo__c"> </lightning-input-field>
-                        <lightning-input-field field-name="AnoModelo__c"></lightning-input-field>
-                        <lightning-input-field field-name="CarroNovo__c"></lightning-input-field>
-                        <lightning-button type="submit" name="submit" label="Criar"></lightning-button>
+                        <lightning-input-field field-name="AnoModelo__c" required="errors"></lightning-input-field>
+                        <lightning-input-field field-name="CarroNovo__c" ></lightning-input-field>
                         
+                        <footer>
+                            <lightning-button name="cancelar" label="Cancelar" onclick={closeModal}></lightning-button>
+                            <lightning-button type="submit" name="submit" label="Criar" variant="brand" style="margin-left: 75%; ;" ></lightning-button>
+                        </footer>
                     </lightning-record-edit-form>
                 </div>
-        
             </div>
 
         </section>
