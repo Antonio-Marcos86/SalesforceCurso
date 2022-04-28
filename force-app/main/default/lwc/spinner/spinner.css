@@ -1,0 +1,11 @@
+.exampleHolder{
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    vertical-align: middle;
+    margin-left: 45%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    white-space: nowrap;
+}
+

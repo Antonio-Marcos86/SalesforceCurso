@@ -1,0 +1,70 @@
+<template>
+    <button class="slds-button slds-button_neutral" onclick={validarTranscricao} style="margin: 5px;">Vincular Protocolo</button>
+    <template if:true={abrirModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="background-color: #005FC8; color: white;">
+                    <div class="slds-modal__close slds-button_icon-inverse" style="cursor:pointer;" onclick={fecharModal}>
+                        <lightning-icon icon-name="utility:close" variant="inverse" size="medium">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Fechar</span>
+                    </div>
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Vincular Protocolo</h1>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="position: relative;">
+                  <input type="text" maxlength="15" onchange={changeCpfCnpj} id="cpf" required placeholder="Digite o CPF/CNPJ do cliente" class="slds-input" style="width: 75% ; margin-right: 1px;">
+                  <button class="slds-button slds-button_neutral" onclick={validarCliente} 
+                      style="margin-top: -55px ; background-color: dodgerblue; margin-left: 475px; color: #FFFFFF">
+                       Consultar Cliente
+                  </button>
+                  <div class="exampleHolder">                    
+                    <template if:true={showSpinner}>
+                        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                    </template>
+                </div>
+                  <br/>
+                  
+                  <template if:true={temCliente}>
+                  
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-no-row-hover" border="0" style="width: 100%">
+                        <thead>
+                            <tr >
+                                <th colspan="3" class="slds-modal__header modal-header" style="background-color: #005FC8; color: white;">Dados do cliente</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col">
+                                    <div class="labelTabela slds-truncate">Nome</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antonio Marcos</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <button class="slds-button slds-button_neutral" onclick={vincularProtocolo}  style="float: right; background-color: dodgerblue; color: #FFFFFF" >Criar Protocolo</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>               
+                </div>
+                
+                <footer class="slds-modal__footer">
+                   
+                    <button class="slds-button slds-button_neutral" onclick={fecharModal} style=" margin-top: 15px ; ">Fechar</button> 
+                
+                </footer> 
+                
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    
+    </template>
+</template>
