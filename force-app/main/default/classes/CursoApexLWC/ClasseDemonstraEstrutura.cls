@@ -77,6 +77,7 @@ public with sharing class ClasseDemonstraEstrutura {
       return acelerar;
 
   }
+  
 
   // execução DML
 

@@ -2,25 +2,27 @@ import { LightningElement, api, track, wire } from 'lwc';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-//import testeJson from '@salesforce/https://pragma-44e-dev-ed--c.visualforce.com/resource/1651160570000/testeJson';
-//import { fireEvent } from 'c/pubsub';
-//import { tratarErroInesperado } from 'c/tratamentoDeErro';
+import buscaMarca from '@salesforce/apex/spinner.buscaMarca';
 
 export default class Spinner extends LightningElement {
     @api recordId;
-    @track abrirModal = false;
-    @track CpfCnpjDigitado;
-    @track cpf;
+    @track abrirModal = false
+    @track MARCA;
+    @track MODELO;
+    @track ANO;
+    @track NOVO;
+    @track marcaDigitada;
     @track temCliente = false;
     @track showSpinner = true;
-    @track dadosCliente = {
-        nomCliente: ''
-    };
     
+    @wire(buscaMarca,{marca : '&marcaDigitada'})
+    carros;
+
 
     abrirModal()
     {
         this.abrirModal = true;
+        
     }
 
     fecharModal()
@@ -30,60 +32,46 @@ export default class Spinner extends LightningElement {
 
     changeCpfCnpj(element)
     {
-        this.CpfCnpjDigitado = element.target.value;
+        this.marcaDigitada = element.target.value;
     }
 
-    validarTranscricao()
-    {
-        // validarTranscricao({idTranscricao:this.recordId})
-        //     .then(result => {
-        //         if(result)
-        //         {
-        //             console.log('BotaoProtocoloTranscricao >> validarTranscricao >> result >> ' + result);
-        //             this.abrirModal = true;
-        //         }
-        //     })
-        //     .catch(error => {
-        //         console.log('BotaoProtocoloTranscricao >> validarTranscricao >> error.body.message >> ' + error.body.message);
-        //         this.fecharModal();
-
-        //         const event = new ShowToastEvent({
-        //             title: 'Caixa Seguradora',
-        //             message: error.body.message,
-        //             variant: 'Warning',
-        //             mode: 'dismissable'
-        //         });
-        //         this.dispatchEvent(event);
-        //     });
-
-     
-         this.connectedCallback();
-         this.temCliente = false;
-        
-    }
-    connectedCallback() {
-        setTimeout(() => {
-            
-        }, 3000);
+    validarTranscricao(){
+        this.temCliente = false;
         this.abrirModal = true;
         this.showSpinner = true;
-    }
+    }// fecha metódo validarTranscricao
 
     validarCliente() {
-        dados = JSON.stringify(json/teste.JSON);
-        alert(dados);
+       
+        buscaMarca({marca: this.marcaDigitada}).then(
+            result=>{
+                if(result != null){
+                    this.MARCA = result[0].Name;
+                    this.MODELO = result[0].Modelo__c;
+                    this.ANO = result[0].AnoModelo__c;
+                    this.NOVO = result[0].CarroNovo__c;
+
                     this.temCliente = true;
                     this.showSpinner = false;
-       
-          
+                    }else{
+                        alert('else');
+                        this.temCliente = false;
+                        const event = new ShowToastEvent({
+                            title: 'Erro',
+                            message: 'Veículo não encontrado',
+                            variant: 'error',
+                            mode: 'dismissable'
+                        });
+                        this.dispatchEvent(event);
+                    }
+                    
+            });  
+            
     }
 
-    vincularProtocolo() {
-        console.log('vincularProtocolo >> this.CpfCnpjDigitado: ' + this.CpfCnpjDigitado);
-        vincularProtocolo({ idTranscricao: this.recordId, idCliente: this.dadosCliente.idClienteLead })
-        .then(result => {
-            if (result) {
-                console.log('vincularProtocolo: ' + JSON.stringify(result));
+    vincularProtocolo() {    
+         
+        console.log('vincularProtocolo: ' + JSON.stringify(result));
 
                 const event = new ShowToastEvent({
                     title: 'Sucesso',
@@ -92,13 +80,7 @@ export default class Spinner extends LightningElement {
                     mode: 'dismissable'
                 });
                 this.dispatchEvent(event);
-            }
-        })
-        .catch(error => {
-            tratarErroInesperado(error, this, error.body.message);
-            //this.template.querySelector("[data-id=loadingSpinner]").classList.add("slds-hide");
-        });
-        
+           
         this.fecharModal();
     }
 
