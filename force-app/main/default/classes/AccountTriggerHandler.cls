@@ -1,4 +1,4 @@
-public with sharing class AccountTriggerHandler {
+public class AccountTriggerHandler {
 
     List<Account> oldRecords {get; set;} // Trigger.old
     List<Account> newRecords {get; set;} // Trigger.new
@@ -16,7 +16,7 @@ public with sharing class AccountTriggerHandler {
     // before insert
     public void beforeInsert(){
         AccountHelper.fillAccountDescription(this.newRecords);
-
+        AccountHelper.testaTelefone(this.newRecords);
     }
 
     // after insert

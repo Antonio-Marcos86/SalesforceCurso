@@ -12,6 +12,27 @@ public with sharing class AccountHelper {
         }
     }
 
+    public static void formatPhone(Account account){
+        String areaCode = account.phone.substring(0,2);
+        String firstpart = account.phone.substring(2,7);
+        String secondPart = account.phone.substring(7);
+
+        Account.phone =  String.format('({0}) {1}-{2}' , new List<Object>{areaCode, firstpart, secondPart});
+
+    }
+
+    public static void testaTelefone(List<Account> contaN){
+        for(Account conta : contaN){
+             if(conta.Phone == null){
+                conta.addError('Por favor informar o telefone');
+             }else if(conta.Phone.length() < 11){
+                conta.addError('Por favor informar número de telefone correto');
+             }else{
+                 formatPhone(conta);
+             }
+        }
+    }
+
      public static List<Contact> createContacts(List<Account> accountList){
          List<Contact> contactList = new List<Contact>();
 

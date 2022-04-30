@@ -1,0 +1,28 @@
+/*
+    Carrega o registro atual na base
+    System validation rules
+    Before triggers
+    Custom validation rules
+    Duplicate rules
+    Salva o registro na base, mas não persiste
+    After Triggers
+    Assigment rules
+    Auto-Response
+    Workflow Rules
+    Escalation rules
+    Entitlement rules
+    Roll-up fiels
+    Sharing evaluation(diff)
+    Persite os dados na base
+    Post logic process
+*/
+
+/*
+    Padrões e ordem triggers
+
+        Trigger
+            -> TriggerHandler
+                onBeforeInsert
+                onBeforeUpdate
+                    ->TriggerHelper
+*/
