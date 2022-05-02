@@ -55,4 +55,11 @@ public with sharing class AccountHelper {
 
         }
     }
+
+    public static void testaExecute(){
+        String nome = 'Antonio Marcos ';
+        system.debug(nome);
+    }
+
+    testaExecute();
 }

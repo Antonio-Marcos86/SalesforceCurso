@@ -41,8 +41,7 @@ export default class Spinner extends LightningElement {
         this.showSpinner = true;
     }// fecha metódo validarTranscricao
 
-    validarCliente() {
-       
+    validarCliente() { 
         buscaMarca({marca: this.marcaDigitada}).then(
             result=>{
                 if(result != null){
@@ -71,17 +70,14 @@ export default class Spinner extends LightningElement {
 
     vincularProtocolo() {    
          
-        console.log('vincularProtocolo: ' + JSON.stringify(result));
-
-                const event = new ShowToastEvent({
-                    title: 'Sucesso',
-                    message: 'Protocolo gerado com sucesso!',
-                    variant: 'Success',
-                    mode: 'dismissable'
-                });
-                this.dispatchEvent(event);
+        const event = new ShowToastEvent({
+            title: 'Sucesso',
+            message: 'Protocolo gerado com sucesso!',
+            variant: 'Success',
+            mode: 'dismissable'
+        });
+        this.dispatchEvent(event);
            
         this.fecharModal();
     }
-
 }
