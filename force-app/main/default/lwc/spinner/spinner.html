@@ -1,5 +1,6 @@
+<!-- sldsValidatorIgnore -->
 <template>
-    <button class="slds-button slds-button_neutral" onclick={validarTranscricao} style="margin: 5px;">Abrir Modal</button>
+    <button class="slds-button slds-button_neutral" onclick={validarTranscricao} style="margin: 5px;">Buscar Contato</button>
     <template if:true={abrirModal}>
         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
             <div class="slds-modal__container">
@@ -11,12 +12,13 @@
                     </div>
                     <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Buscar carro</h1>
                 </header>
+                
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                  <input type="text" id="marca" name="Marca" onchange={changeCpfCnpj} maxlength="11" required placeholder="Digite a marca do veículo" class="marcaDigitadaClass" style="width: 75% ; margin-right: 1px;">
-                  <button class="slds-button slds-button_neutral" onclick={validarCliente} 
-                      style=" margin-top: -55px ;background-color: dodgerblue; margin-left: 475px; color: #FFFFFF">
+                    <lightning-input name="CPF" label="CPF/CNPJ"  maxlength="20" onchange={handleMaskCPF} onblur={mudar} style="width: 75%;"></lightning-input>
+                   <button class="slds-button slds-button_neutral" onclick={validarCliente} 
+                      style=" margin-top: -55px;background-color: dodgerblue; margin-left: 475px; color: #FFFFFF">
                        Buscar
-                  </button>
+                  </button> 
                   <div class="exampleHolder">                    
                     <template if:true={showSpinner}>
                         <lightning-spinner alternative-text="Loading"></lightning-spinner>
@@ -29,34 +31,29 @@
                     <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-no-row-hover" border="0" style="width: 100%">
                         <thead>
                             <tr >
-                                <th colspan="4" class="slds-modal__header modal-header" style="background-color: #005FC8; color: white;">Dados do Veiculo</th>
+                                <th colspan="3" class="slds-modal__header modal-header" style="background-color: #005FC8; color: white;">Dados do Contato</th>
                             </tr>
                         </thead>
                         <thead>
                             <tr>
                                 <th scope="col">
-                                    <div class="labelTabela slds-truncate">Marca</div>
+                                    <div class="labelTabela slds-truncate">Nome</div>
                                 </th>
                                 <th scope="col">
-                                    <div class="labelTabela slds-truncate">Modelo</div>
+                                    <div class="labelTabela slds-truncate">Cpf/Cnpj</div>
                                     
                                 </th>
                                 <th scope="col">
-                                    <div class="labelTabela slds-truncate">Ano</div>
+                                    <div class="labelTabela slds-truncate">Telefone</div>
                                     
-                                </th>
-                                <th scope="col">
-                                    <div class="labelTabela slds-truncate">Novo?</div>
-
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td scope="row">{MARCA}</td>
-                                <td scope="row">{MODELO}</td>
-                                <td scope="row">{ANO}</td>
-                                <td scope="row">{NOVO}</td>
+                                <td scope="row">{NOME}</td>
+                                <td scope="row">{CPF}</td>
+                                <td scope="row">{TELEFONE}</td>
                                 
                             </tr>
                             

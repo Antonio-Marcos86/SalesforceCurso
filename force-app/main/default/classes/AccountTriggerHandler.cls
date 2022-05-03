@@ -16,7 +16,7 @@ public class AccountTriggerHandler {
     // before insert
     public void beforeInsert(){
         AccountHelper.fillAccountDescription(this.newRecords);
-        AccountHelper.testaTelefone(this.newRecords);
+            AccountHelper.testaTelefone(this.newRecords);
     }
 
     // after insert
