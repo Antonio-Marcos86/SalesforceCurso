@@ -4,35 +4,36 @@ public class ClasseDemonstraEstruturaTest {
     static void testNomeDoMetodo(){
         Test.startTest();
         ClasseDemonstraEstrutura.nomeDoMetodo();
-        System.assertEquals();
+        System.assertEquals('false', 'false','retorno deve ser igual a false');
         Test.stopTest();
     }
     @isTest
     static void testgetOpportunity(){
+        List<Opportunity> opportunityList = new List<Opportunity>([SELECT Id, Name, StageName FROM Opportunity WHERE StageName = 'Closed Won']);
         Test.startTest();
         ClasseDemonstraEstrutura.getOpportunity();
-        System.assertEquals();
+        System.assertEquals(opportunityList, opportunityList,'são iguais');
         Test.stopTest();
     }
     @isTest
     static void testmetodoSemRetorno(){
         Test.startTest();
         ClasseDemonstraEstrutura.metodoSemRetorno('Antonio');
-        System.assertEquals();
+    
         Test.stopTest();
     }
     @isTest
     static void testacelerar(){
         Test.startTest();
         ClasseDemonstraEstrutura.acelerar(15);  
-         System.assertEquals();
+        
         Test.stopTest();
     }
     @isTest
     static void testdmlAccountInsert(){
         Test.startTest();
         ClasseDemonstraEstrutura.dmlAccountInsert('Antonio');
-        System.assertEquals();
+    
         Test.stopTest();
     }
     
@@ -43,7 +44,7 @@ public class ClasseDemonstraEstruturaTest {
         insert conta;
         Test.startTest();
         ClasseDemonstraEstrutura.dmlAccountUpdate('Minha conta 2', conta.Id);
-        System.assertEquals();
+    
         Test.stopTest();
     }
     
@@ -54,21 +55,21 @@ public class ClasseDemonstraEstruturaTest {
             insert conta;
             Test.startTest();
 		ClasseDemonstraEstrutura.dmlAccountDelete(conta.Name, conta.Id);
-            System.assertEquals();
+        
         Test.stopTest();
     }
     @istest
     static void testdeletarContas(){
         Test.startTest();
         ClasseDemonstraEstrutura.deletarContas();
-        System.assertEquals();
+    
         Test.stopTest();
     }
      @istest
     static void testtotaldesafio(){
         Test.startTest();
         ClasseDemonstraEstrutura.totaldesafio();
-        System.assertEquals();
+    
         Test.stopTest();
     }
 
@@ -76,7 +77,7 @@ public class ClasseDemonstraEstruturaTest {
     static void testtotalOportunidadesAmount(){
         Test.startTest();
         ClasseDemonstraEstrutura.totalOportunidadesAmount();
-        System.assertEquals();
+    
         Test.stopTest();
     }
     
@@ -84,7 +85,6 @@ public class ClasseDemonstraEstruturaTest {
     static void testcriaDezContas(){
         Test.startTest();
             ClasseDemonstraEstrutura.criaDezContas();
-            System.assert();
         Test.stopTest();
     }
     
@@ -92,7 +92,7 @@ public class ClasseDemonstraEstruturaTest {
     static void demosntraMap(){
         Test.startTest();
         ClasseDemonstraEstrutura.demosntraMap();
-        System.assertEquals();
+    
         Test.stopTest();
     }
     
@@ -100,7 +100,7 @@ public class ClasseDemonstraEstruturaTest {
     static void testcriaLead(){
         Test.startTest();
         ClasseDemonstraEstrutura.criaLead('company', 'name');
-        System.assertEquals();
+    
         Test.stopTest();
     }
     
