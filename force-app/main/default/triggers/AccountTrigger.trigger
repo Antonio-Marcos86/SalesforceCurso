@@ -39,15 +39,14 @@ trigger AccountTrigger on Account (before insert, after insert, before delete, b
 
     }
 
-    if(Trigger.IsUpdate && Trigger.IsBefore){
-        for(Account conta: Trigger.new){
-            conta.Phone = '5555-5555';
-        }
+     if(Trigger.IsUpdate && Trigger.IsBefore){
+         for(Account conta: Trigger.new){
+             conta.Phone = '55555555444';
+         }
 
     }
 
     
   
-       
+}    
 
-}
