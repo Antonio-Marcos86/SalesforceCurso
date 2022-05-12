@@ -16,4 +16,5 @@ public with sharing class ContactTriggerHandler {
        List<Account> accountList = ContactHelper.updateAccountInfo(this.oldRecords);
        update accountList;
    }
+
 }

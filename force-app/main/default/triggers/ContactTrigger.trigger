@@ -1,4 +1,4 @@
-trigger ContactTrigger on Contact (after insert, after delete) {
+trigger ContactTrigger on Contact (after insert, after delete, before update) {
 
 
     ContactTriggerHandler handler = new ContactTriggerHandler(
@@ -6,9 +6,10 @@ trigger ContactTrigger on Contact (after insert, after delete) {
     );
 
     switch on Trigger.operationType{
-        When AFTER_DELETE {
+        when AFTER_DELETE {
             handler.afterDelete();
         }
+       
     }
 
     // toda vez que inserimos um contato novo, enviar um email de aviso para o mesmo
@@ -49,4 +50,5 @@ trigger ContactTrigger on Contact (after insert, after delete) {
 
     }
 
+   
 }
